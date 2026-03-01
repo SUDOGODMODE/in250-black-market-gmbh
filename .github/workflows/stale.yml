@@ -1,0 +1,30 @@
+name: "Verfluchung inaktiver Aufgaben"
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Läuft jeden Tag um Mitternacht
+  workflow_dispatch:      # Erlaubt uns, die Action manuell zu testen (wichtig für Punkt 6!)
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Konfiguration der Zeiten
+          days-before-stale: 30
+          days-before-close: 7
+          
+          # Nachrichten für Issues
+          stale-issue-message: 'Dieses Issue wurde als "Stale" markiert, da es seit 30 Tagen unberührt blieb. In 7 Tagen wird es ins Schattenreich verbannt (geschlossen), wenn kein Lebenszeichen erfolgt.'
+          close-issue-message: 'Der Fluch hat zugeschlagen. Dieses Issue wurde wegen Inaktivität geschlossen.'
+          
+          # Nachrichten für Pull Requests
+          stale-pr-message: 'Dieser Pull Request staubt ein. Er ist nun offiziell "Stale". In 7 Tagen wird er automatisch geschlossen.'
+          close-pr-message: 'Aufgrund anhaltender Ignoranz wurde dieser Pull Request geschlossen.'
