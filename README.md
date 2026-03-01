@@ -4,7 +4,7 @@
 Willkommen in der digitalen Festung der Black Market Software GmbH. Unter der Führung von Lord Black bündeln wir hier unsere geheimen Codes, verwalten die Archive der Gilde und schaffen Ordnung im Reich der Versionen.
 
 ## System-Vorschau
-![Hauptquartier](assets/devops.png)
+![Hauptquartier](assets/bilder/devops.png)
 
 ## Dokumentation
 Navigation durch die Gilden-Archive:
